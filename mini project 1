@@ -1,0 +1,938 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMHpZJYX68HGT3XauRfGxqS",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/navpreet025/1.basics-of-python/blob/main/mini%20project%201\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q1. L is a list defined as L= [11, 12, 13, 14].\n",
+        "(i) WAP to add 50 and 60 to L.\n",
+        "(ii) WAP to remove 11 and 13from L.\n",
+        "(iii) WAP to sort L in ascending order.\n",
+        "(iv) WAP to sort L in descending order.\n",
+        "(v) WAP to search for 13 in L.\n",
+        "(vi) WAP to count the number of elements present in L.\n",
+        "(vii) WAP to sum all the elements in L.\n",
+        "(viii) WAP to sum all ODD numbers in L.\n",
+        "(ix) WAP to sum all EVEN numbers in L.\n",
+        "(x) WAP to sum all PRIME numbers in L.\n",
+        "(xi) WAP to clear all the elements in L.\n",
+        "(xii) WAP to delete L."
+      ],
+      "metadata": {
+        "id": "CxK0TQr0NnHU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "L = [11, 12, 13, 14]\n",
+        "\n",
+        "# (i) Add 50 and 60 to L\n",
+        "L.extend([50, 60])\n",
+        "print(\"After adding 50 and 60:\", L)\n",
+        "\n",
+        "# (ii) Remove 11 and 13 from L\n",
+        "L.remove(11)\n",
+        "L.remove(13)\n",
+        "print(\"After removing 11 and 13:\", L)\n",
+        "\n",
+        "# (iii) Sort L in ascending order\n",
+        "L.sort()\n",
+        "print(\"Sorted in ascending order:\", L)\n",
+        "\n",
+        "# (iv) Sort L in descending order\n",
+        "L.sort(reverse=True)\n",
+        "print(\"Sorted in descending order:\", L)\n",
+        "\n",
+        "# (v) Search for 13 in L\n",
+        "print(\"Is 13 in L?\", 13 in L)\n",
+        "\n",
+        "# (vi) Count number of elements\n",
+        "print(\"Number of elements:\", len(L))\n",
+        "\n",
+        "# (vii) Sum all elements\n",
+        "print(\"Sum of all elements:\", sum(L))\n",
+        "\n",
+        "# (viii) Sum all ODD numbers\n",
+        "odd_sum = sum(x for x in L if x % 2 != 0)\n",
+        "print(\"Sum of odd numbers:\", odd_sum)\n",
+        "\n",
+        "# (ix) Sum all EVEN numbers\n",
+        "even_sum = sum(x for x in L if x % 2 == 0)\n",
+        "print(\"Sum of even numbers:\", even_sum)\n",
+        "\n",
+        "# (x) Sum all PRIME numbers\n",
+        "def is_prime(n):\n",
+        "    if n <= 1:\n",
+        "        return False\n",
+        "    for i in range(2, int(n**0.5)+1):\n",
+        "        if n % i == 0:\n",
+        "            return False\n",
+        "    return True\n",
+        "\n",
+        "prime_sum = sum(x for x in L if is_prime(x))\n",
+        "print(\"Sum of prime numbers:\", prime_sum)\n",
+        "\n",
+        "# (xi) Clear all elements\n",
+        "L.clear()\n",
+        "print(\"After clearing:\", L)\n",
+        "\n",
+        "# (xii) Delete L\n",
+        "del L\n",
+        "# print(L)  # This will raise NameError as L is deleted"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "PLt82328OTJ4",
+        "outputId": "fad9a17b-a68f-472f-e263-56e827351870"
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "After adding 50 and 60: [11, 12, 13, 14, 50, 60]\n",
+            "After removing 11 and 13: [12, 14, 50, 60]\n",
+            "Sorted in ascending order: [12, 14, 50, 60]\n",
+            "Sorted in descending order: [60, 50, 14, 12]\n",
+            "Is 13 in L? False\n",
+            "Number of elements: 4\n",
+            "Sum of all elements: 136\n",
+            "Sum of odd numbers: 0\n",
+            "Sum of even numbers: 136\n",
+            "Sum of prime numbers: 0\n",
+            "After clearing: []\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q2. D is a dictionary defined as D= {1:5.6, 2:7.8, 3:6.6, 4:8.7, 5:7.7}.\n",
+        "(i) WAP to add new entry in D; key=8 and value is 8.8\n",
+        "(ii) WAP to remove key=2.\n",
+        "(iii) WAP to check weather 6 key is present in D.\n",
+        "(iv) WAP to count the number of elements present in D.\n",
+        "(v) WAP to add all the values present D.\n",
+        "(vi) WAP to update the value of 3 to 7.1.\n",
+        "(vii) WAP to clear the dictionary."
+      ],
+      "metadata": {
+        "id": "rdGKODotOdJB"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "D = {1:5.6, 2:7.8, 3:6.6, 4:8.7, 5:7.7}\n",
+        "\n",
+        "# (i) Add new entry key=8, value=8.8\n",
+        "D[8] = 8.8\n",
+        "print(\"After adding 8:8.8:\", D)\n",
+        "\n",
+        "# (ii) Remove key=2\n",
+        "del D[2]\n",
+        "print(\"After removing key 2:\", D)\n",
+        "\n",
+        "# (iii) Check if key 6 is present\n",
+        "print(\"Is key 6 present?\", 6 in D)\n",
+        "\n",
+        "# (iv) Count number of elements\n",
+        "print(\"Number of elements:\", len(D))\n",
+        "\n",
+        "# (v) Sum all values\n",
+        "print(\"Sum of all values:\", sum(D.values()))\n",
+        "\n",
+        "# (vi) Update value of key 3 to 7.1\n",
+        "D[3] = 7.1\n",
+        "print(\"After updating key 3:\", D)\n",
+        "\n",
+        "# (vii) Clear the dictionary\n",
+        "D.clear()\n",
+        "print(\"After clearing:\", D)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "9PRDhD34OscP",
+        "outputId": "07710818-8046-495e-9def-7ee4ae8dc923"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "After adding 8:8.8: {1: 5.6, 2: 7.8, 3: 6.6, 4: 8.7, 5: 7.7, 8: 8.8}\n",
+            "After removing key 2: {1: 5.6, 3: 6.6, 4: 8.7, 5: 7.7, 8: 8.8}\n",
+            "Is key 6 present? False\n",
+            "Number of elements: 5\n",
+            "Sum of all values: 37.4\n",
+            "After updating key 3: {1: 5.6, 3: 7.1, 4: 8.7, 5: 7.7, 8: 8.8}\n",
+            "After clearing: {}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q3. S1 is a set defined as S1= [10, 20, 30, 40, 50, 60].\n",
+        " S2 is a set defined as S2= [40, 50, 60, 70, 80, 90].\n",
+        "(i) WAP to add 55 and 66 in Set S1.\n",
+        "(ii) WAP to remove 10 and 30 from Set S1.\n",
+        "(iii) WAP to check whether 40 is present in S1.\n",
+        "(iv) WAP to find the union between S1 and S2.\n",
+        "(v) WAP to find the intersection between S1 and S2.\n",
+        "(vi) WAP to find the S1 - S2"
+      ],
+      "metadata": {
+        "id": "CcK95-L7O3dM"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "S1 = {10, 20, 30, 40, 50, 60}\n",
+        "S2 = {40, 50, 60, 70, 80, 90}\n",
+        "\n",
+        "# (i) Add 55 and 66 to S1\n",
+        "S1.add(55)\n",
+        "S1.add(66)\n",
+        "print(\"After adding 55 and 66 to S1:\", S1)\n",
+        "\n",
+        "# (ii) Remove 10 and 30 from S1\n",
+        "S1.discard(10)\n",
+        "S1.discard(30)\n",
+        "print(\"After removing 10 and 30 from S1:\", S1)\n",
+        "\n",
+        "# (iii) Check if 40 is present in S1\n",
+        "print(\"Is 40 in S1?\", 40 in S1)\n",
+        "\n",
+        "# (iv) Union of S1 and S2\n",
+        "print(\"Union of S1 and S2:\", S1.union(S2))\n",
+        "\n",
+        "# (v) Intersection of S1 and S2\n",
+        "print(\"Intersection of S1 and S2:\", S1.intersection(S2))\n",
+        "\n",
+        "# (vi) S1 - S2\n",
+        "print(\"S1 - S2:\", S1.difference(S2))"
+      ],
+      "metadata": {
+        "collapsed": true,
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4L-kZB9GPE19",
+        "outputId": "2d9104c9-4075-4415-b1b9-fa752d744f9d"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "After adding 55 and 66 to S1: {50, 66, 20, 55, 40, 10, 60, 30}\n",
+            "After removing 10 and 30 from S1: {50, 66, 20, 55, 40, 60}\n",
+            "Is 40 in S1? True\n",
+            "Union of S1 and S2: {66, 70, 40, 80, 50, 20, 55, 90, 60}\n",
+            "Intersection of S1 and S2: {40, 50, 60}\n",
+            "S1 - S2: {66, 20, 55}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q4. Write the following program.\n",
+        "(i) WAP to print 100 random strings whose length between 6 and 8.\n",
+        "(ii) WAP to print all prime numbers between 600 and 800.\n",
+        "(iii) WAP to print all numbers between 100 and 1000 that are divisible by 7 and 9"
+      ],
+      "metadata": {
+        "id": "gN_OXavuPNlj"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import random\n",
+        "import string\n",
+        "\n",
+        "# (i) Print 100 random strings (length 6-8)\n",
+        "def random_string():\n",
+        "    length = random.randint(6, 8)\n",
+        "    return ''.join(random.choice(string.ascii_letters) for _ in range(length))\n",
+        "\n",
+        "print(\"100 random strings:\")\n",
+        "for _ in range(100):\n",
+        "    print(random_string())\n",
+        "\n",
+        "# (ii) Print all prime numbers between 600 and 800\n",
+        "def is_prime(n):\n",
+        "    if n <= 1:\n",
+        "        return False\n",
+        "    for i in range(2, int(n**0.5)+1):\n",
+        "        if n % i == 0:\n",
+        "            return False\n",
+        "    return True\n",
+        "\n",
+        "print(\"\\nPrime numbers between 600 and 800:\")\n",
+        "for num in range(600, 801):\n",
+        "    if is_prime(num):\n",
+        "        print(num, end=\" \")\n",
+        "\n",
+        "# (iii) Print numbers between 100 and 1000 divisible by 7 and 9\n",
+        "print(\"\\n\\nNumbers between 100 and 1000 divisible by 7 and 9:\")\n",
+        "for num in range(100, 1001):\n",
+        "    if num % 7 == 0 and num % 9 == 0:\n",
+        "        print(num, end=\" \")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6TdzcZL-PW1H",
+        "outputId": "9950b0f3-4eaf-4f1c-f226-9cc98187a6d2"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "100 random strings:\n",
+            "CCBwgC\n",
+            "VDbTfqs\n",
+            "VMnztIqb\n",
+            "KlUBSuzj\n",
+            "iZMsOYjC\n",
+            "jVpwWMrC\n",
+            "HNOWuQJ\n",
+            "YywEfdTN\n",
+            "jJfiIHUl\n",
+            "nSlTpu\n",
+            "zZgyNdZV\n",
+            "VOQEIvX\n",
+            "ijXcUVb\n",
+            "dyBbAbAW\n",
+            "oViOqyeQ\n",
+            "NgNJrVV\n",
+            "MIUdWl\n",
+            "OyHuFM\n",
+            "iBjrgn\n",
+            "gFKTDYYW\n",
+            "PETpLXI\n",
+            "cTnVnxoP\n",
+            "lsdDMx\n",
+            "ztlwEM\n",
+            "LTAHSU\n",
+            "ArVcnZB\n",
+            "AGGyNk\n",
+            "szeoMT\n",
+            "VcKRZGim\n",
+            "ABbbbT\n",
+            "OYcDtHGC\n",
+            "LDTSoCM\n",
+            "oZJwwn\n",
+            "zUmgpJA\n",
+            "xphYMS\n",
+            "ekbhTeGM\n",
+            "gxyTgcNS\n",
+            "pjHLHe\n",
+            "SlLkiXBN\n",
+            "ZODUiLVm\n",
+            "FEtSDE\n",
+            "eMtEOkT\n",
+            "tJCjeyWW\n",
+            "tKohfgBP\n",
+            "RMhwZO\n",
+            "htONERyo\n",
+            "iWxsHn\n",
+            "ebJAac\n",
+            "RNVSZc\n",
+            "heFdVfP\n",
+            "QmSuzoV\n",
+            "DxkOyFC\n",
+            "QsqPHaI\n",
+            "EHtmrK\n",
+            "FmoTXDx\n",
+            "NOcfrC\n",
+            "fNEDKHIL\n",
+            "IinqnnV\n",
+            "ddCCAkZJ\n",
+            "GPdiosC\n",
+            "xIqgACsT\n",
+            "kEMpWH\n",
+            "SxcIuSN\n",
+            "BcqgedZU\n",
+            "JaIBUR\n",
+            "ixqoTA\n",
+            "oVJWcz\n",
+            "Naflswe\n",
+            "oCSPlj\n",
+            "vuIicJeF\n",
+            "UKTNVOe\n",
+            "lrMKSF\n",
+            "AmddCj\n",
+            "nEVNgX\n",
+            "sTqWAT\n",
+            "tusYDd\n",
+            "dRXPKf\n",
+            "ttrSCvh\n",
+            "cHLVOzYr\n",
+            "OaOoDR\n",
+            "fAaSvrm\n",
+            "PDEzJE\n",
+            "tNxtOD\n",
+            "IagXfBvX\n",
+            "TGFGeCf\n",
+            "nmwOJX\n",
+            "gvzAAl\n",
+            "BfzhvV\n",
+            "azNlwMp\n",
+            "nbmRRIAK\n",
+            "jRmqfZrj\n",
+            "MoisQeRX\n",
+            "zriNErtS\n",
+            "HWRXacn\n",
+            "HjcXIO\n",
+            "GtXOsvrf\n",
+            "cMhGBy\n",
+            "YmOult\n",
+            "cAFunKcd\n",
+            "yGZRsn\n",
+            "\n",
+            "Prime numbers between 600 and 800:\n",
+            "601 607 613 617 619 631 641 643 647 653 659 661 673 677 683 691 701 709 719 727 733 739 743 751 757 761 769 773 787 797 \n",
+            "\n",
+            "Numbers between 100 and 1000 divisible by 7 and 9:\n",
+            "126 189 252 315 378 441 504 567 630 693 756 819 882 945 "
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q5. WAP to create two lists of 10 random numbers between 10 and 30; Find\n",
+        "(i) Common numbers in the two lists\n",
+        "(ii) Unique numbers in both the list\n",
+        "(iii) Minimum in both the list\n",
+        "(iv) Maximum in both the list\n",
+        "(v) Sum of both the lists"
+      ],
+      "metadata": {
+        "id": "VQNdPCB4PjYt"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import random\n",
+        "\n",
+        "# Create two lists of 10 random numbers between 10 and 30\n",
+        "list1 = [random.randint(10, 30) for _ in range(10)]\n",
+        "list2 = [random.randint(10, 30) for _ in range(10)]\n",
+        "\n",
+        "print(\"List 1:\", list1)\n",
+        "print(\"List 2:\", list2)\n",
+        "\n",
+        "# (i) Common numbers\n",
+        "common = set(list1) & set(list2)\n",
+        "print(\"\\nCommon numbers:\", common)\n",
+        "\n",
+        "# (ii) Unique numbers in both lists\n",
+        "unique = set(list1) ^ set(list2)\n",
+        "print(\"Unique numbers in both lists:\", unique)\n",
+        "\n",
+        "# (iii) Minimum in both lists\n",
+        "print(\"Min in list1:\", min(list1), \"Min in list2:\", min(list2))\n",
+        "\n",
+        "# (iv) Maximum in both lists\n",
+        "print(\"Max in list1:\", max(list1), \"Max in list2:\", max(list2))\n",
+        "\n",
+        "# (v) Sum of both lists\n",
+        "print(\"Sum of list1:\", sum(list1), \"Sum of list2:\", sum(list2))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "ntULb_pfPukk",
+        "outputId": "e07a0f5c-7d13-498e-b832-60d1bef297f3"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "List 1: [28, 26, 23, 24, 19, 24, 19, 14, 23, 11]\n",
+            "List 2: [12, 18, 22, 13, 22, 21, 10, 28, 14, 15]\n",
+            "\n",
+            "Common numbers: {28, 14}\n",
+            "Unique numbers in both lists: {10, 11, 12, 13, 15, 18, 19, 21, 22, 23, 24, 26}\n",
+            "Min in list1: 11 Min in list2: 10\n",
+            "Max in list1: 28 Max in list2: 28\n",
+            "Sum of list1: 211 Sum of list2: 175\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q6. WAP to create a list of 100 random numbers between 100 and 900. Count and print the:\n",
+        "(i) All odd numbers\n",
+        "(ii) All even numbers\n",
+        "(iii) All prime numbers"
+      ],
+      "metadata": {
+        "id": "uEfM5Lm_P1Rm"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import random\n",
+        "\n",
+        "# Create list of 100 random numbers between 100 and 900\n",
+        "numbers = [random.randint(100, 900) for _ in range(100)]\n",
+        "\n",
+        "# (i) All odd numbers\n",
+        "odd_numbers = [x for x in numbers if x % 2 != 0]\n",
+        "print(\"Odd numbers:\", odd_numbers)\n",
+        "print(\"Count of odd numbers:\", len(odd_numbers))\n",
+        "\n",
+        "# (ii) All even numbers\n",
+        "even_numbers = [x for x in numbers if x % 2 == 0]\n",
+        "print(\"\\nEven numbers:\", even_numbers)\n",
+        "print(\"Count of even numbers:\", len(even_numbers))\n",
+        "\n",
+        "# (iii) All prime numbers\n",
+        "def is_prime(n):\n",
+        "    if n <= 1:\n",
+        "        return False\n",
+        "    for i in range(2, int(n**0.5)+1):\n",
+        "        if n % i == 0:\n",
+        "            return False\n",
+        "    return True\n",
+        "\n",
+        "prime_numbers = [x for x in numbers if is_prime(x)]\n",
+        "print(\"\\nPrime numbers:\", prime_numbers)\n",
+        "print(\"Count of prime numbers:\", len(prime_numbers))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "ZOo_sYqxQCiM",
+        "outputId": "64540076-d82e-42be-92a4-4499655a0678"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Odd numbers: [693, 891, 875, 481, 435, 459, 705, 445, 467, 571, 807, 557, 777, 535, 721, 855, 623, 759, 721, 687, 523, 605, 445, 829, 707, 133, 517, 631, 597, 273, 459, 163, 567, 523, 305, 747, 133, 589, 631, 687, 811, 521, 881, 691, 823]\n",
+            "Count of odd numbers: 45\n",
+            "\n",
+            "Even numbers: [476, 270, 720, 620, 214, 422, 332, 458, 128, 252, 174, 634, 704, 396, 794, 368, 512, 486, 206, 438, 320, 708, 200, 546, 662, 778, 744, 892, 356, 466, 184, 468, 468, 216, 310, 872, 140, 306, 242, 670, 352, 438, 548, 634, 274, 614, 594, 898, 558, 710, 104, 608, 518, 396, 586]\n",
+            "Count of even numbers: 55\n",
+            "\n",
+            "Prime numbers: [467, 571, 557, 523, 829, 631, 163, 523, 631, 811, 521, 881, 691, 823]\n",
+            "Count of prime numbers: 14\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q7. D is a dictionary defined as D={1:\"One\",2:\"Two\",3:\"Three\",4:\"Four\", 5:\"Five\"}.\n",
+        " WAP to read all the keys and values from dictionary and write to the file in the given below format.\n",
+        "Key1, Value1\n",
+        "Key2, Value2\n",
+        "Key3, Value3"
+      ],
+      "metadata": {
+        "id": "8LHGdTIFQIxq"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "D = {1:\"One\", 2:\"Two\", 3:\"Three\", 4:\"Four\", 5:\"Five\"}\n",
+        "\n",
+        "with open(\"dictionary_output.txt\", \"w\") as file:\n",
+        "    for key, value in D.items():\n",
+        "        file.write(f\"{key}, {value}\\n\")\n",
+        "\n",
+        "print(\"Dictionary written to file successfully.\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "QbTdkgztRSpN",
+        "outputId": "b7b5a240-4d77-4cbc-83cf-a2b7fdc22e3f"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Dictionary written to file successfully.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q8. L is a list defined as L={\"One\",\"Two\",\"Three\",\"Four\",\"Five\"}.\n",
+        " WAP to count the length of reach element from a list and write to the file in the given below format:\n",
+        "One, 3\n",
+        "Two, 3\n",
+        "Four, 4"
+      ],
+      "metadata": {
+        "id": "hkBeh_4CRZqp"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "L = [\"One\", \"Two\", \"Three\", \"Four\", \"Five\"]\n",
+        "\n",
+        "with open(\"list_lengths.txt\", \"w\") as file:\n",
+        "    for item in L:\n",
+        "        file.write(f\"{item}, {len(item)}\\n\")\n",
+        "\n",
+        "print(\"List element lengths written to file successfully.\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "5-jdr6hMRlWv",
+        "outputId": "6188230a-734e-4953-c5eb-e2f896b2fb43"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "List element lengths written to file successfully.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q9. Write to the file 100 random strings whose length between 10 and 15."
+      ],
+      "metadata": {
+        "id": "oCXMYVZdR39s"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import random\n",
+        "import string\n",
+        "\n",
+        "def random_string():\n",
+        "    length = random.randint(10, 15)\n",
+        "    return ''.join(random.choice(string.ascii_letters) for _ in range(length))\n",
+        "\n",
+        "with open(\"random_strings.txt\", \"w\") as file:\n",
+        "    for _ in range(100):\n",
+        "        file.write(random_string() + \"\\n\")\n",
+        "\n",
+        "print(\"100 random strings written to file successfully.\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "C188i_ioSSOB",
+        "outputId": "c173909c-e7d7-40c2-e9cd-36dcb4ead7fa"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "100 random strings written to file successfully.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q10. Write to the file all prime numbers between 600 and 800."
+      ],
+      "metadata": {
+        "id": "UkbH-qK4SZJD"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def is_prime(n):\n",
+        "    if n <= 1:\n",
+        "        return False\n",
+        "    for i in range(2, int(n**0.5)+1):\n",
+        "        if n % i == 0:\n",
+        "            return False\n",
+        "    return True\n",
+        "\n",
+        "with open(\"primes_600_800.txt\", \"w\") as file:\n",
+        "    for num in range(600, 801):\n",
+        "        if is_prime(num):\n",
+        "            file.write(f\"{num}\\n\")\n",
+        "\n",
+        "print(\"Prime numbers between 600 and 800 written to file successfully.\")"
+      ],
+      "metadata": {
+        "collapsed": true,
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "FepF6olwSl65",
+        "outputId": "27109506-0768-4b08-89d7-3bc4ce5b2366"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Prime numbers between 600 and 800 written to file successfully.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q11. WAP to calculate the time taken by a program."
+      ],
+      "metadata": {
+        "id": "n3IwLWnvTEMI"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import time\n",
+        "\n",
+        "start_time = time.time()\n",
+        "\n",
+        "# Your program code here\n",
+        "# For example:\n",
+        "total = 0\n",
+        "for i in range(1, 1000001):\n",
+        "    total += i\n",
+        "\n",
+        "end_time = time.time()\n",
+        "execution_time = end_time - start_time\n",
+        "\n",
+        "print(f\"Program executed in {execution_time:.4f} seconds\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "GUg8_Yb4TRgh",
+        "outputId": "5d819ba1-448f-42d4-84c0-05afb715922a"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Program executed in 0.1306 seconds\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q12. WAP to sort following number of elements in a list, calculate time taken and plot the graph.\n",
+        "Number of elements in list Time Taken\n",
+        "5k T1\n",
+        "10k T2\n",
+        "15k T3\n",
+        "20k T4\n",
+        "25k T5"
+      ],
+      "metadata": {
+        "id": "mZQM2GkITZ0w"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import time\n",
+        "import random\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sizes = [5000, 10000, 15000, 20000, 25000]\n",
+        "times = []\n",
+        "\n",
+        "for size in sizes:\n",
+        "    data = [random.randint(1, 100000) for _ in range(size)]\n",
+        "\n",
+        "    start_time = time.time()\n",
+        "    data.sort()\n",
+        "    end_time = time.time()\n",
+        "\n",
+        "    elapsed = end_time - start_time\n",
+        "    times.append(elapsed)\n",
+        "    print(f\"Sorted {size} elements in {elapsed:.4f} seconds\")\n",
+        "\n",
+        "# Plotting the graph\n",
+        "plt.plot(sizes, times, marker='o')\n",
+        "plt.title('Sorting Time Analysis')\n",
+        "plt.xlabel('Number of Elements')\n",
+        "plt.ylabel('Time Taken (seconds)')\n",
+        "plt.grid(True)\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 559
+        },
+        "collapsed": true,
+        "id": "jLMhfm74Te2G",
+        "outputId": "b8970cdc-8736-4a3f-b8ba-72f8f3fe3831"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Sorted 5000 elements in 0.0011 seconds\n",
+            "Sorted 10000 elements in 0.0017 seconds\n",
+            "Sorted 15000 elements in 0.0031 seconds\n",
+            "Sorted 20000 elements in 0.0051 seconds\n",
+            "Sorted 25000 elements in 0.0053 seconds\n"
+          ]
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<Figure size 640x480 with 1 Axes>"
+            ],
+            "image/png": "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\n"
+          },
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Q13. WAP to create a dictionary of student marks in five subjects and you have to find the student\n",
+        " having maximum and minimum average marks."
+      ],
+      "metadata": {
+        "id": "_LD58Is1TlJG"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "students = {\n",
+        "    \"Alice\": [85, 90, 78, 92, 88],\n",
+        "    \"Bob\": [76, 82, 79, 81, 84],\n",
+        "    \"Charlie\": [92, 95, 88, 90, 94],\n",
+        "    \"Diana\": [78, 82, 80, 85, 79],\n",
+        "    \"Eve\": [88, 92, 85, 90, 87]\n",
+        "}\n",
+        "\n",
+        "# Calculate averages\n",
+        "averages = {name: sum(marks)/len(marks) for name, marks in students.items()}\n",
+        "\n",
+        "# Find max and min averages\n",
+        "max_student = max(averages.items(), key=lambda x: x[1])\n",
+        "min_student = min(averages.items(), key=lambda x: x[1])\n",
+        "\n",
+        "print(f\"Student with maximum average: {max_student[0]} ({max_student[1]:.2f})\")\n",
+        "print(f\"Student with minimum average: {min_student[0]} ({min_student[1]:.2f})\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "mn0rVbqmTs9j",
+        "outputId": "97675699-91bd-4026-e6d5-92ef7dd44eb6"
+      },
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Student with maximum average: Charlie (91.80)\n",
+            "Student with minimum average: Bob (80.40)\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
